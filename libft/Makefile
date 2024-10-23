@@ -59,10 +59,14 @@ $(NAME): ${OBJS}
 all : ${NAME}
 
 clean:
-	${RM} ${OBJS}
+	@echo "Cleaning object files..."
+	@${RM} ${OBJS}
+	@echo "Done!"
 
 fclean:	clean
-	${RM} ${NAME}
+	@echo "Deleting binary..."
+	@${RM} ${NAME}
+	@echo "Done!"
 
 re:	fclean all
 

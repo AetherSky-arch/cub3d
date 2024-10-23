@@ -62,12 +62,17 @@ libft:
 	@echo "\n"
 
 clean:
-	rm -rf $(OBJDIR)
-	cd minilibx ; make clean
+	@echo "Cleaning object files..."
+	@rm -rf $(OBJDIR)
+	@echo "Done!\n"
+	@cd minilibx ; make clean
+	@echo ""
 	@cd libft ; make clean
 
 fclean: clean
-	rm -f $(NAME)
+	@echo "Deleting binary..."
+	@rm -f $(NAME)
+	@echo "Done!\n"
 	@cd libft ; make fclean
 
 re: fclean all
