@@ -41,25 +41,34 @@ OBJS = $(SRCS:%.c=$(OBJDIR)/%.o)
 
 NAME = cub3d
 
-all: libft $(NAME)
+all: libft mlx $(NAME)
+
+mlx:
+	@if ! test -d ./minilibx ; then echo "downloading minilibx from github.com/42Paris/minilibx-linux.git..."; fi
+	@if ! test -d ./minilibx ; then git clone https://github.com/42Paris/minilibx-linux.git minilibx; fi
+	@echo "compiling minilibx..." ; cd minilibx ; ./configure
 
 $(NAME): $(OBJS)
-	cc -Wall -Wextra -Werror -o $(NAME) $(OBJS) $(MINILIBX) -lm -L libft -lft
+	@cc -Wall -Wextra -Werror -o $(NAME) $(OBJS) $(MINILIBX) -lm -L libft -lft
+	@echo "\nDone!"
 
 $(OBJDIR)/%.o : %.c
-	mkdir -p $(dir $@)
-	cc -g3 -Wall -Wextra -Werror -o $@ -c $<
+	@mkdir -p $(dir $@)
+	@cc -g3 -Wall -Wextra -Werror -o $@ -c $<
 
 libft:
-	cd libft ; make
+	@if test -f libft/libft.a; then echo "Building Libft..." ; fi
+	@cd libft ; make
+	@echo "\n"
 
 clean:
 	rm -rf $(OBJDIR)
-	cd libft ; make clean
+	cd minilibx ; make clean
+	@cd libft ; make clean
 
 fclean: clean
-	rm -rf $(NAME)
-	cd libft ; make fclean
+	rm -f $(NAME)
+	@cd libft ; make fclean
 
 re: fclean all
 
