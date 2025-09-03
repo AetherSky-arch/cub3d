@@ -8,13 +8,13 @@ make a dynamic view inside a maze, in which you’ll have to find your way.
 ```
 ~ The subject for this project
 
-Cub3d is a raycaster: a program that displays a 3D environment on the screen using the raycasting method (see here: https://en.wikipedia.org/wiki/Raycasting)
+Cub3d is a raycaster: a program that displays a 3D environment on the screen using the [raycasting](https://en.wikipedia.org/wiki/Raycasting) method.
 
 Simply put, it casts rays of "light" from the camera in the direction in which the "player" is looking, and determines what to display (and how to do so) depending on what and when each ray collides with an obstacle.
 
 ## Dependencies
 This program makes use of 42 School's graphical library, the miniLibX, which will be cloned in the project at compile time. 
-For more details, see the miniLibX's github repository: https://github.com/42Paris/minilibx-linux
+For more details, see the [miniLibX's github repository](https://github.com/42Paris/minilibx-linux).
 
 ## Usage
 Compile with ```make```
