@@ -6,7 +6,7 @@
 /*   By: ftanon <ftanon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/06 10:13:34 by ftanon            #+#    #+#             */
-/*   Updated: 2024/09/11 12:59:13 by ftanon           ###   ########.fr       */
+/*   Updated: 2024/09/11 15:44:51 by ftanon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ int	init_minilibx(t_mlx *mlx)
 {
 	mlx->mlx_p = mlx_init();
 	if (mlx->mlx_p == NULL)
-		return (1);
+		return (printf("Error: minilibx init failed\n"), 1);
 	mlx->win_ptr = mlx_new_window(mlx->mlx_p, SW, SH, "cub3d");
 	if (mlx->win_ptr == NULL)
 		return (1);

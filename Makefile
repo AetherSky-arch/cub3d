@@ -39,41 +39,29 @@ OBJDIR = .obj
 
 OBJS = $(SRCS:%.c=$(OBJDIR)/%.o)
 
+CFLAGS = -Wno-incompatible-pointer-types
+
 NAME = cub3d
 
-all: libft mlx $(NAME)
-
-mlx:
-	@if ! test -d ./minilibx ; then echo "downloading minilibx from github.com/42Paris/minilibx-linux.git..."; fi
-	@if ! test -d ./minilibx ; then git clone https://github.com/42Paris/minilibx-linux.git minilibx; fi
-	@echo "compiling minilibx..." ; cd minilibx ; ./configure
+all: libft $(NAME)
 
 $(NAME): $(OBJS)
-	@cc -Wall -Wextra -Werror -o $(NAME) $(OBJS) $(MINILIBX) -lm -L libft -lft
-	@echo "\nDone!"
+	cc -Wall -Wextra -Werror -Wno-incompatible-pointer-types -o $(NAME) $(OBJS) $(MINILIBX) -lm -L libft -lft
 
 $(OBJDIR)/%.o : %.c
-	@mkdir -p $(dir $@)
-	@cc -g3 -Wall -Wextra -Werror -o $@ -c $<
+	mkdir -p $(dir $@)
+	cc -g3 -Wall -Wextra -Werror -Wno-incompatible-pointer-types -o $@ -c $<
 
 libft:
-	@if test -f libft/libft.a; then echo "Building Libft..." ; fi
-	@cd libft ; make
-	@echo "\n"
+	cd libft ; make
 
 clean:
-	@echo "Cleaning object files..."
-	@rm -rf $(OBJDIR)
-	@echo "Done!\n"
-	@cd minilibx ; make clean
-	@echo ""
-	@cd libft ; make clean
+	rm -rf $(OBJDIR)
+	cd libft ; make clean
 
 fclean: clean
-	@echo "Deleting binary..."
-	@rm -f $(NAME)
-	@echo "Done!\n"
-	@cd libft ; make fclean
+	rm -rf $(NAME)
+	cd libft ; make fclean
 
 re: fclean all
 

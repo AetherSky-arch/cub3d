@@ -49,24 +49,18 @@ RM = rm -f
 CFLAGS = -Wall -Wextra -Werror
 
 .c.o:
-	@${CC} ${CFLAGS} -g3 -I . -c $< -o ${<:.c=.o}
+	${CC} ${CFLAGS} -g3 -I . -c $< -o ${<:.c=.o}
 
 $(NAME): ${OBJS}
-	@echo "Compiling Libft..."
-	@ar rcs ${NAME} ${OBJS}
-	@echo "Compiled!"
+	ar rcs ${NAME} ${OBJS}
 
-all : ${NAME}
+all bonus: ${NAME}
 
 clean:
-	@echo "Cleaning object files..."
-	@${RM} ${OBJS}
-	@echo "Done!"
+	${RM} ${OBJS}
 
 fclean:	clean
-	@echo "Deleting binary..."
-	@${RM} ${NAME}
-	@echo "Done!"
+	${RM} ${NAME}
 
 re:	fclean all
 

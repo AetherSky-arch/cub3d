@@ -27,7 +27,7 @@ int	check_argument(char *filename, int inputnumber)
 		printf("Error\nFile name incorrect\n");
 		return (1);
 	}
-	if (ft_strncmp(string, ".cub", 4) != 0)
+	if (ft_strncmp(string, ".cub\0", 5) != 0)
 	{
 		printf("Error\nFile name incorrect\n");
 		return (1);

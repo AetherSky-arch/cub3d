@@ -6,7 +6,7 @@
 /*   By: ftanon <ftanon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/07 13:39:00 by ftanon            #+#    #+#             */
-/*   Updated: 2024/09/11 12:11:39 by ftanon           ###   ########.fr       */
+/*   Updated: 2024/09/11 15:50:24 by ftanon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	open_xpm(char *str)
 	fd = open(path, O_RDONLY);
 	free(path);
 	if (fd < 0)
-		return (printf("Xpm not found\n"), close(fd), 1);
+		return (printf("Texture not found\n"), close(fd), 1);
 	close(fd);
 	return (0);
 }
